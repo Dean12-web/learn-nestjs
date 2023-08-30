@@ -1,0 +1,13 @@
+MODULE
+Setiap aplikasi nestJS wajib memiliki module, setidaknya satu module, yaitu root module
+setiap module diletakkan pada sebuah folder agar struktur project menjadi rapi
+Module merupakan singleton (instance dari object ada 1 tapi dapat digunakan berkali-kali)
+untuk membuat module, class diberikan decorator @Module(), decorator bertugas untuk memberikan metadata pada module yang digunakan oleh nestJS untuk mengorganisir project
+nest g module dir_name (perintah membuat module dengan cli)
+property module :
+    providers(kumpulan provider yang akan dibuat NEstJS injector yang bisa di share diseluruh module ini),
+    controllers(kumpulan controller yang akan digunakan pada modul),
+    imports(daftar module yang ingin kita gunakan fiturnya, dengan syarat, fitur/provider/service tersebut di export oleh modul tersebut),
+    exports(kumpulan provider/fitur/service yang akan di export. fitur ini nantinnya dapat di import oleh module lain)
+Project Overview
+Application module -> User Module, Auth Module, Book Module
