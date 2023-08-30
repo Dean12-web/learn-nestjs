@@ -35,6 +35,7 @@ jika proses validasi gagal, piper akan menghentikan prosesnya disana dan melempa
 exception yang di lempar akan diproses oleh nestjs dan dijadikan error response (bukan internal server error)
 tambahkan decorator @injectable() pada class dan implement interface PipeTransform
 Cara menggunakan pipes (global,handler,parameter scope pipes)
+untuk menggunakan validasi dibutuhkan library tambahan (class validator or other)
 
 DTO (Data Transfer Object) gunanya untuk membungkus body menjadi bentuk struktuk yang kita inginkan,
 setiap dto memiliki fungsinya masing2

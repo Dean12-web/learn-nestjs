@@ -1,6 +1,6 @@
 import {IsInt,IsNotEmpty} from 'class-validator'
 import {Type} from 'class-transformer'
-export class CreateBookDto {
+export class updateBookDto {
     @IsNotEmpty()
     title : string;
 
