@@ -11,3 +11,33 @@ property module :
     exports(kumpulan provider/fitur/service yang akan di export. fitur ini nantinnya dapat di import oleh module lain)
 Project Overview
 Application module -> User Module, Auth Module, Book Module
+
+CONTROLLER
+controller bertugas untuk menerima request dari client dan memberikan response ke client
+setiap controller bertugas untuk menerima data dari endpoint tertentu, seperti "/users" dengan method tertentu (GET,POST,PATCH,PUT,DELETE)
+controller akan menggunakan provider yang telah didaftarkan pada module
+untuk membuat controller, kita harus memberikan decorator @controller() pada suatu class
+parameter yang di isi pada decorator @Controller() adalah string base path dar controller tersebut
+nest g contoller cont_name (perintah membuat controller dengan cli)
+
+PROVIDER 
+Provider merupakan komponen penting pada NestJS 
+Provider biasanya digunakan sebagai Service, Repository, Factory, Helper dan lain lain
+NestJs akan menginject provide ke module yang menggunakan provider tsb (dependency injection), sehingga provider tersebut dapat digunakan di seluruh tempat di module tsb (contoh: Controller, Provider lain)
+untuk membuat provider tambahkan decorator @Injectable() pada class
+nest g service provider_name (perintah membuat provider dengan cli)
+service merupakan tempat dimana business logic diletakkan, controller digunakan hanya untuk menerima request dan memberikan response, proses validasi juga digunakan di controller
+
+PIPES 
+Sebuah class yang berfungsi untuk melakukan transformasi atau validasi argument yang akan di proses oleh route handler
+pipe dapat mengembalikan data asli atau data yang sudah di modifikasi ke route handler
+jika proses validasi gagal, piper akan menghentikan prosesnya disana dan melempar exception
+exception yang di lempar akan diproses oleh nestjs dan dijadikan error response (bukan internal server error)
+tambahkan decorator @injectable() pada class dan implement interface PipeTransform
+Cara menggunakan pipes (global,handler,parameter scope pipes)
+
+DTO (Data Transfer Object) gunanya untuk membungkus body menjadi bentuk struktuk yang kita inginkan,
+setiap dto memiliki fungsinya masing2
+ 
+
+
