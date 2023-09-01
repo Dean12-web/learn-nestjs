@@ -39,6 +39,18 @@ untuk menggunakan validasi dibutuhkan library tambahan (class validator or other
 
 DTO (Data Transfer Object) gunanya untuk membungkus body menjadi bentuk struktuk yang kita inginkan,
 setiap dto memiliki fungsinya masing2
+
+TYPEORM
+adalah ORM yang dapat berjalan pada NODEJS, Browser DLL
+TypeORM support TS dan JS
+TypeORM mendukung active Record dan data mapper
+
+Repository berguna untuk mengakses database
+Entity mengisi entitas table database
+
+
+Promise<Book> akan mereturn object dengan type Book setelah Promisenya ter-resolve, kalo Promise<void> akan ngereturn void (allias gak ada objek) setelah ter-resolve. simpelnya kalo void gak ada returnnya, kalo selain itu ada returnnya.
+
  
 
 
