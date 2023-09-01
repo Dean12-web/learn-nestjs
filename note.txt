@@ -45,6 +45,12 @@ adalah ORM yang dapat berjalan pada NODEJS, Browser DLL
 TypeORM support TS dan JS
 TypeORM mendukung active Record dan data mapper
 
+Repository berguna untuk mengakses database
+Entity mengisi entitas table database
+
+
+Promise<Book> akan mereturn object dengan type Book setelah Promisenya ter-resolve, kalo Promise<void> akan ngereturn void (allias gak ada objek) setelah ter-resolve. simpelnya kalo void gak ada returnnya, kalo selain itu ada returnnya.
+
  
 
 

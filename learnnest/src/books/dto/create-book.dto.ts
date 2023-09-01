@@ -13,5 +13,5 @@ export class CreateBookDto {
     @IsNotEmpty()
     @IsInt()
     @Type(() => Number)
-    year: string;  
+    year: number;  
 }
