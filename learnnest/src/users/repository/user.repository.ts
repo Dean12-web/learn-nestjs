@@ -12,7 +12,7 @@ export class UserRepository extends Repository<User>{
         const query = this.createQueryBuilder('user');
     
         if(name){
-            query.andWhere(`lower(user.name) LIKE :name`,{title: `%${name.toLowerCase()}%`})
+            query.andWhere(`lower(user.name) LIKE :name`,{name: `%${name.toLowerCase()}%`})
         }
 
         if(email){
