@@ -49,8 +49,12 @@ Repository berguna untuk mengakses database
 Entity mengisi entitas table database
 
 
-Promise<Book> akan mereturn object dengan type Book setelah Promisenya ter-resolve, kalo Promise<void> akan ngereturn void (allias gak ada objek) setelah ter-resolve. simpelnya kalo void gak ada returnnya, kalo selain itu ada returnnya.
+Promise<Book> akan mereturn object dengan type Book setelah Promisenya ter-resolve, 
+kalo Promise<void> akan ngereturn void (allias gak ada objek) setelah ter-resolve. 
+simpelnya kalo void gak ada returnnya, kalo selain itu ada returnnya.
 
- 
-
-
+JWT
+merupakan standart pertukaran data
+jwt mengikut standar RFC 7519, data yang ditukarkan format JSON
+jwt digunakan untuk authorissi, dan pertukaran data
+struktur jwt (header,payload,signature)
