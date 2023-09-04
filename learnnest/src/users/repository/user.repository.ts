@@ -10,13 +10,13 @@ export class UserRepository extends Repository<User>{
     async getUsers(filter: fillterUserDto): Promise<User[]> {
         const { name, email } = filter
         const query = this.createQueryBuilder('user');
-    
-        if(name){
-            query.andWhere(`lower(user.name) LIKE :name`,{name: `%${name.toLowerCase()}%`})
+
+        if (name) {
+            query.andWhere(`lower(user.name) LIKE :name`, { name: `%${name.toLowerCase()}%` })
         }
 
-        if(email){
-            query.andWhere(`lower(user.email) LIKE :email`,{email : `%${email.toLowerCase()}%`})
+        if (email) {
+            query.andWhere(`lower(user.email) LIKE :email`, { email: `%${email.toLowerCase()}%` })
         }
 
         return await query.getMany()
@@ -33,12 +33,22 @@ export class UserRepository extends Repository<User>{
         try {
             await user.save()
         } catch (error) {
-            if(error.code = '23505'){
+            if (error.code = '23505') {
                 throw new ConflictException(`Email ${email} already used`)
-            }else{
+            } else {
                 throw new InternalServerErrorException(error)
             }
 
+        }
+    }
+
+    async validateUser(email: string, password: string): Promise<User> {
+        const user = await this.findOne({ email })
+
+        if (user && (await user.validatePassword(password))) {
+            return user;
+        } else {
+            return null
         }
     }
 }

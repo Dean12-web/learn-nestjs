@@ -18,4 +18,8 @@ export class UsersService {
     async createUser(createUserDto: CreateUserDto): Promise<void>{
         return await this.userRepository.createUser(createUserDto)
     }
+
+    async validateUser(email:string, password:string) : Promise<User>{
+        return await this.userRepository.validateUser(email,password)
+    }
 }
