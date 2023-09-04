@@ -58,3 +58,12 @@ merupakan standart pertukaran data
 jwt mengikut standar RFC 7519, data yang ditukarkan format JSON
 jwt digunakan untuk authorissi, dan pertukaran data
 struktur jwt (header,payload,signature)
+
+Guard
+guard bertugas untuk menentukan apakah suatu request akan di handle atau tidak oleh route handler
+Biasanaya digunakan unutk authorization
+Pada Express, authorization biasanaya dilakukan oleh middleware. akan tetapi middleware "tidak tahu" route mana yang menghandle request tersebut
+guard di eksekusi setelah semua middleware dijalankan, tetapi sebelum interceptor dan pipes
+membuat guard, setap guard wajibg mengimplement fungsi canActive
+
+
