@@ -1,4 +1,4 @@
-import { Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
+import { Injectable, InternalServerErrorException, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt'
 import { LoginDto } from './dto/login.dto';
 import { LoginResponse } from './interface/login-response.interface';
@@ -77,5 +77,14 @@ export class AuthService {
         }
         const refresh_token = await this.jwtService.signAsync(payload, refreshTokenConfig)
         return refresh_token;
+    }
+
+    async revokeRefreshToken(id:string): Promise<void> {
+        const refreshToken = await this.refreshTokenRepository.findOne(id)
+        if(!refreshToken){
+            throw new NotFoundException('Refresh Token is not Found')   
+        }
+        refreshToken.isRevoke = true
+        await refreshToken.save()
     }
 }

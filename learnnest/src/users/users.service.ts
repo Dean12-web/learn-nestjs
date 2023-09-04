@@ -15,6 +15,10 @@ export class UsersService {
     async getUsers(filter: fillterUserDto):Promise<User[]>{
         return this.userRepository.getUsers(filter)
     }
+
+    async getUserById(id: string):Promise<User>{
+        return await this.userRepository.findOne(id);
+    }
     async createUser(createUserDto: CreateUserDto): Promise<void>{
         return await this.userRepository.createUser(createUserDto)
     }

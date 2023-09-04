@@ -1,4 +1,5 @@
-import {Entity, BaseEntity, PrimaryGeneratedColumn,Column} from 'typeorm'
+import { User } from 'src/users/entity/user.entity'
+import {Entity, BaseEntity, PrimaryGeneratedColumn,Column, ManyToOne} from 'typeorm'
 
 @Entity()
 export class Books extends BaseEntity {
@@ -16,4 +17,7 @@ export class Books extends BaseEntity {
 
     @Column()
     year:number
+
+    @ManyToOne(() => User, (user) => user.books)
+    user : User;
 }

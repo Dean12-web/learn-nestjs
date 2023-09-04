@@ -3,12 +3,13 @@ import { EntityRepository, Repository } from 'typeorm'
 import { FilterBookDto } from '../dto/filter-book.dto';
 import { CreateBookDto } from '../dto/create-book.dto';
 import { InternalServerErrorException } from '@nestjs/common';
+import { User } from 'src/users/entity/user.entity';
 
 @EntityRepository(Books)
 export class BookRepository extends Repository<Books>{
-    async getBooks(filter: FilterBookDto): Promise<Books[]> {
+    async getBooks(user: User,filter: FilterBookDto): Promise<Books[]> {
         const { title, author, category, min_year, max_year} = filter
-        const query = this.createQueryBuilder('book');
+        const query = this.createQueryBuilder('book').where('book.userId = :userId', {userId: user.id});
         
         if(title){
             // query.andWhere(`lower(book.title) LIKE :title`,{title:title.toLowerCase()})
@@ -36,13 +37,14 @@ export class BookRepository extends Repository<Books>{
         return await query.getMany()
     }
 
-    async createBook(createBookDto: CreateBookDto): Promise<void>{
+    async createBook(user:User,createBookDto: CreateBookDto): Promise<void>{
         const { title, author, category, year } = createBookDto;
         const book = this.create()
         book.title = title;
         book.author = author;
         book.category = category;
         book.year = year;
+        book.user = user;
 
         try {
             await book.save()
